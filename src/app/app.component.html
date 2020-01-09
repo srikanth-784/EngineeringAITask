@@ -1,0 +1,47 @@
+<h1 class="text-center ">Engineer.AI</h1>
+<div class="container-fluid">
+  <input type="text" class="my-3 " placeholder="Search by title" [(ngModel)]="text">
+  <table class="table table-bordered table-hover text-center">
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Url</td>
+        <td>Created_At</td>
+        <td>Author</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of tableData | search:text" data-toggle="modal" data-target="#myModal" (click)="selectRow(i)">
+        <td>{{i.title}}</td>
+        <td>{{i.url}}</td>
+        <td>{{i.created_at}}</td>
+        <td>{{i.author}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <h4 class="modal-title">JSON Data</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+      <div class="modal-body">
+        <pre>{{row | json}}</pre>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
